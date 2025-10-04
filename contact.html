@@ -5,70 +5,124 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - Aba Alqassim</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        emailjs.init({ publicKey: "YOUR_PUBLIC_KEY_HERE" });
+    </script>
 </head>
 <body>
     <header>
-        <h1>Contact Aba Alqassim</h1>
+        <h1 class="bilingual-header">Contact Aba Alqassim</h1>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
+            <button class="lang-toggle">Switch to عربي</button>
         </nav>
     </header>
     <main>
-        <section class="contact-hero">
-            <h2>Get in Touch</h2>
-            <p>Ready to start your digital journey? We'd love to hear from you. Fill out the form below or reach us directly.</p>
+        <!-- English Section -->
+        <section class="english-section">
+            <section class="contact-hero">
+                <h2>Get in Touch</h2>
+                <p>Ready to start your digital journey? We'd love to hear from you. Fill out the form below.</p>
+            </section>
+
+            <section class="contact-form-section">
+                <h2>Send Us a Message</h2>
+                <form id="contact-form" class="contact-form">
+                    <input type="hidden" name="cc" value="s.ahmedjaffer@gmail.com">
+                    <div>
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div>
+                        <label for="subject">Subject:</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div>
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">Send Message</button>
+                </form>
+            </section>
         </section>
 
-        <section class="contact-info">
-            <h2>Our Details</h2>
-            <ul class="contact-list">
-                <li><span class="emoji">📧</span> Email: info@abaalqassim.com</li>
-                <li><span class="emoji">📱</span> Phone: +1 (555) 123-4567</li>
-                <li><span class="emoji">📍</span> Location: Virtual (Worldwide)</li>
-            </ul>
-        </section>
+        <!-- Arabic Section -->
+        <section class="arabic-section">
+            <section class="contact-hero">
+                <h2 class="bilingual-header">تواصل معنا</h2>
+                <p>هل أنت جاهز لبدء رحلتك الرقمية؟ نحب سماع منك. املأ النموذج أدناه.</p>
+            </section>
 
-        <section class="contact-form-section">
-            <h2>Send Us a Message</h2>
-            <form action="https://formspree.io/f/your-form-id" method="POST" class="contact-form" aria-labelledby="contact-form-heading">
-                <div>
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required aria-required="true">
-                </div>
-                <div>
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required aria-required="true">
-                </div>
-                <div>
-                    <label for="subject">Subject:</label>
-                    <input type="text" id="subject" name="subject" required aria-required="true">
-                </div>
-                <div>
-                    <label for="message">Message:</label>
-                    <textarea id="message" name="message" rows="5" required aria-required="true"></textarea>
-                </div>
-                <button type="submit" class="cta-button">Send Message</button>
-            </form>
+            <section class="contact-form-section">
+                <h2 class="bilingual-header">أرسل لنا رسالة</h2>
+                <form id="contact-form-ar" class="contact-form">
+                    <input type="hidden" name="cc" value="s.ahmedjaffer@gmail.com">
+                    <div>
+                        <label for="name-ar">الاسم:</label>
+                        <input type="text" id="name-ar" name="name" required>
+                    </div>
+                    <div>
+                        <label for="email-ar">البريد الإلكتروني:</label>
+                        <input type="email" id="email-ar" name="email" required>
+                    </div>
+                    <div>
+                        <label for="subject-ar">الموضوع:</label>
+                        <input type="text" id="subject-ar" name="subject" required>
+                    </div>
+                    <div>
+                        <label for="message-ar">الرسالة:</label>
+                        <textarea id="message-ar" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">أرسل الرسالة</button>
+                </form>
+            </section>
         </section>
     </main>
     <footer>
         <p>&copy; 2025 Aba Alqassim. All rights reserved.</p>
     </footer>
+
+    <!-- EmailJS & Toggle JS -->
+    <script type="text/javascript">
+        // EmailJS for English form
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            emailjs.sendForm('YOUR_SERVICE_ID_HERE', 'YOUR_TEMPLATE_ID_HERE', this)
+                .then(() => { alert('Thank you!'); this.reset(); })
+                .catch(() => alert('Failed to send.'));
+        });
+
+        // EmailJS for Arabic form
+        document.getElementById('contact-form-ar').addEventListener('submit', function(e) {
+            e.preventDefault();
+            emailjs.sendForm('YOUR_SERVICE_ID_HERE', 'YOUR_TEMPLATE_ID_HERE', this)
+                .then(() => { alert('شكراً!'); this.reset(); })
+                .catch(() => alert('فشل في الإرسال.'));
+        });
+    </script>
+
+    <!-- Language Toggle JS -->
     <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const toggleBtn = document.querySelector('.lang-toggle');
-    const body = document.body;
-    
-    toggleBtn.addEventListener('click', function() {
-        body.classList.toggle('arabic-mode');
-        const lang = body.classList.contains('arabic-mode') ? 'عربي' : 'English';
-        toggleBtn.textContent = `Switch to ${lang}`;
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggleBtn = document.querySelector('.lang-toggle');
+        const body = document.body;
+        
+        toggleBtn.addEventListener('click', function() {
+            body.classList.toggle('arabic-mode');
+            const lang = body.classList.contains('arabic-mode') ? 'English' : 'عربي';
+            toggleBtn.textContent = `Switch to ${lang}`;
+        });
     });
-});
-</script>
+    </script>
 </body>
 </html>
