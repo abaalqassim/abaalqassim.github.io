@@ -8,53 +8,85 @@
 </head>
 <body>
     <header>
-        <h1>Welcome to Aba Alqassim</h1>
+        <h1 class="bilingual-header">Welcome to Aba Alqassim</h1>
         <nav>
-<ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About Us</a></li>
-    <li><a href="contact.html">Contact</a></li>
-</ul>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="lang-toggle">Switch to عربي</button>
         </nav>
     </header>
     <main>
-        <section class="hero-section">
-            <h2>Empowering Organizations in the Digital Age</h2>
-            <p>At Aba Alqassim, we blend tradition with cutting-edge technology to help you thrive. With over 16 years of IT expertise, we're here to guide your digital transformation.</p>
-            <a href="about.html" class="cta-button">Learn More About Us</a>
+        <!-- English Section -->
+        <section class="english-section">
+            <section class="hero-section">
+                <h2>Empowering Organizations in the Digital Age</h2>
+                <p>At Aba Alqassim, we blend tradition with cutting-edge technology to help you thrive. With over 16 years of IT expertise, we're here to guide your digital transformation.</p>
+                <a href="about.html" class="cta-button">Learn More About Us</a>
+            </section>
+
+            <section class="overview-section">
+                <h2>Our Story</h2>
+                <p>Named in reverence to Prophet Muhammad (peace be upon him and his noble family), Aba Alqassim is more than a name—it's a blessing for innovation. We're two passionate IT professionals turning our experience into entrepreneurial impact.</p>
+            </section>
+
+            <section class="services-teaser">
+                <h2>What We Offer</h2>
+                <p>Discover services that bridge heritage and modernity:</p>
+                <ul class="services-list">
+                    <li><span class="emoji">🌐</span> Mesh-based Web Services</li>
+                    <li><span class="emoji">📚</span> Knowledge Sharing Sessions</li>
+                    <li><span class="emoji">☁</span> Custom SaaS Applications</li>
+                    <li><span class="emoji">🚀</span> Digital Transformation Support</li>
+                </ul>
+                <a href="about.html" class="cta-button">Explore Details</a>
+            </section>
         </section>
 
-        <section class="overview-section">
-            <h2>Our Story</h2>
-            <p>Named in reverence to Prophet Muhammad (peace be upon him and his noble family), Aba Alqassim is more than a name—it's a blessing for innovation. We're two passionate IT professionals turning our experience into entrepreneurial impact.</p>
-        </section>
+        <!-- Arabic Section -->
+        <section class="arabic-section">
+            <section class="hero-section">
+                <h2 class="bilingual-header">تمكين المنظمات في العصر الرقمي</h2>
+                <p>في أبا القاسم، نجمع بين التراث والتكنولوجيا المتقدمة لمساعدتكم على الازدهار. مع أكثر من 16 عامًا من الخبرة في تكنولوجيا المعلومات، نحن هنا لتوجيه تحولكم الرقمي.</p>
+                <a href="about.html" class="cta-button">تعرف على المزيد عنا</a>
+            </section>
 
-        <section class="services-teaser">
-            <h2>What We Offer</h2>
-            <p>Discover services that bridge heritage and modernity:</p>
-            <ul class="services-list">
-                <li><span class="emoji">🌐</span> Mesh-based Web Services</li>
-                <li><span class="emoji">📚</span> Knowledge Sharing Sessions</li>
-                <li><span class="emoji">☁</span> Custom SaaS Applications</li>
-                <li><span class="emoji">🚀</span> Digital Transformation Support</li>
-            </ul>
-            <a href="about.html" class="cta-button">Explore Details</a>
+            <section class="overview-section">
+                <h2 class="bilingual-header">قصتنا</h2>
+                <p>سمينا أبا القاسم تبركًا بالنبي محمد صلى الله عليه وآله، فهو أكثر من اسم—إنه بركة للابتكار. نحن اثنان من المهندسين التقنيين الشغوفين الذين يحولون خبراتهم إلى تأثير ريادي.</p>
+            </section>
+
+            <section class="services-teaser">
+                <h2 class="bilingual-header">ما نقدمه</h2>
+                <p>اكتشف الخدمات التي تربط بين التراث والحداثة:</p>
+                <ul class="services-list-arabic">
+                    <li><span class="emoji">🌐</span> خدمات الويب الشبكية</li>
+                    <li><span class="emoji">📚</span> جلسات مشاركة المعرفة</li>
+                    <li><span class="emoji">☁</span> تطبيقات SaaS المخصصة</li>
+                    <li><span class="emoji">🚀</span> دعم التحول الرقمي</li>
+                </ul>
+                <a href="about.html" class="cta-button">استكشف التفاصيل</a>
+            </section>
         </section>
     </main>
     <footer>
         <p>&copy; 2025 Aba Alqassim. All rights reserved.</p>
     </footer>
+
+    <!-- Language Toggle JS -->
     <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const toggleBtn = document.querySelector('.lang-toggle');
-    const body = document.body;
-    
-    toggleBtn.addEventListener('click', function() {
-        body.classList.toggle('arabic-mode');
-        const lang = body.classList.contains('arabic-mode') ? 'عربي' : 'English';
-        toggleBtn.textContent = `Switch to ${lang}`;
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggleBtn = document.querySelector('.lang-toggle');
+        const body = document.body;
+        
+        toggleBtn.addEventListener('click', function() {
+            body.classList.toggle('arabic-mode');
+            const lang = body.classList.contains('arabic-mode') ? 'English' : 'عربي';
+            toggleBtn.textContent = `Switch to ${lang}`;
+        });
     });
-});
-</script>
+    </script>
 </body>
 </html>
