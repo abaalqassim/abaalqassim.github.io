@@ -81,7 +81,7 @@ section {
     margin-bottom: 2rem;
 }
 
-/* Services List */
+/* Services List - English LTR */
 .services-list {
     list-style: none;
     padding-left: 0;
@@ -101,19 +101,37 @@ section {
     background: #DDE5F0;
 }
 
-.emoji {
+.services-list .emoji {
     font-size: 1.5rem;
-    margin-right: 0.5rem; /* LTR spacing */
-    margin-left: 0.5rem; /* RTL will override */
+    margin-right: 0.5rem; /* LTR: emoji left */
 }
 
-.arabic-section .services-list li {
+/* Services List - Arabic RTL */
+.services-list-arabic {
+    list-style: none;
+    padding-right: 0; /* RTL padding flip */
+}
+
+.services-list-arabic li {
+    display: flex;
+    align-items: flex-start;
     flex-direction: row-reverse; /* RTL: emoji on right */
+    text-align: right; /* Ensure text aligns right */
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: #E9ECEF;
+    border-radius: 5px;
+    transition: background 0.3s ease;
 }
 
-.arabic-section .emoji {
-    margin-right: 0; /* RTL: no right margin */
-    margin-left: 0.5rem;
+.services-list-arabic li:hover {
+    background: #DDE5F0;
+}
+
+.services-list-arabic .emoji {
+    font-size: 1.5rem;
+    margin-left: 0.5rem; /* RTL: space after emoji */
+    margin-right: 0;
 }
 
 /* Sparkle Icon */
@@ -142,13 +160,10 @@ footer {
         margin-bottom: 2rem;
     }
 
-    .services-list li {
+    .services-list li,
+    .services-list-arabic li {
         flex-direction: column;
         text-align: center;
-    }
-
-    .arabic-section .services-list li {
-        flex-direction: column; /* RTL still centers on mobile */
     }
 }
 
