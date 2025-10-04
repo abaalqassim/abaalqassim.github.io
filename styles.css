@@ -332,3 +332,64 @@ footer {
     display: flex;
     flex-direction: column;
 }
+
+/* Language Toggle */
+.lang-toggle {
+    background: none;
+    border: none;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: 1rem; /* LTR spacing */
+    transition: color 0.3s ease;
+}
+
+.lang-toggle:hover {
+    color: #FFD700;
+}
+
+.english-section {
+    display: block !important; /* Default visible for English */
+}
+
+.arabic-section {
+    display: none !important; /* Hidden by default for Arabic */
+}
+
+.arabic-mode .english-section {
+    display: none !important; /* Force hide English in Arabic mode */
+}
+
+.arabic-mode .arabic-section {
+    display: block !important; /* Force show Arabic in Arabic mode */
+}
+
+.arabic-mode {
+    direction: rtl; /* Flip whole page for Arabic */
+    text-align: right;
+}
+
+.arabic-mode nav ul {
+    justify-content: flex-end; /* Nav right-aligned in RTL */
+}
+
+.arabic-mode .cta-button {
+    margin-right: auto; /* Buttons right-aligned */
+}
+
+/* Bilingual Headers */
+.bilingual-header {
+    text-align: center;
+}
+
+.arabic-mode .bilingual-header h1, .arabic-mode .bilingual-header h2 {
+    font-family: 'Tajawal', sans-serif;
+}
+
+/* Responsive Toggle */
+@media (max-width: 768px) {
+    .lang-toggle {
+        margin-left: 0;
+        margin-top: 0.5rem;
+    }
+}
