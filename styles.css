@@ -106,22 +106,25 @@ section {
     margin-right: 0.5rem; /* LTR: emoji left */
 }
 
-/* Services List - Arabic RTL */
+/* Services List - Arabic RTL (Enhanced for Reliability) */
 .services-list-arabic {
     list-style: none;
     padding-right: 0; /* RTL padding flip */
+    direction: rtl; /* Explicit RTL on the list */
 }
 
 .services-list-arabic li {
     display: flex;
     align-items: flex-start;
-    flex-direction: row-reverse; /* RTL: emoji on right */
-    text-align: right; /* Ensure text aligns right */
+    flex-direction: row-reverse; /* Reverse order: text first, emoji last (visually right) */
+    text-align: right; /* Arabic text right-aligned */
+    justify-content: flex-end; /* Pack content to right */
     margin-bottom: 1rem;
     padding: 1rem;
     background: #E9ECEF;
     border-radius: 5px;
     transition: background 0.3s ease;
+    direction: rtl; /* Per-item RTL enforcement */
 }
 
 .services-list-arabic li:hover {
@@ -130,8 +133,9 @@ section {
 
 .services-list-arabic .emoji {
     font-size: 1.5rem;
-    margin-left: 0.5rem; /* RTL: space after emoji */
+    margin-left: 0.5rem; /* Space between emoji and text (now emoji on right) */
     margin-right: 0;
+    order: 1; /* Ensures emoji is visually after text in RTL */
 }
 
 /* Sparkle Icon */
