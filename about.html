@@ -19,8 +19,8 @@
         </nav>
     </header>
     <main>
-        <!-- English Section -->
-        <section class="english-section">
+        <!-- English Content (Visible by Default) -->
+        <div class="english-section">
             <section class="hero-section">
                 <h2>Our Journey and Vision</h2>
                 <p>Discover the heart behind Aba Alqassim—where faith, experience, and innovation converge to empower your digital future.</p>
@@ -47,12 +47,14 @@
                     <li><span class="emoji">🚀</span> Digital Transformation Support: Helping organizations launch e-services with precision and impact.</li>
                 </ul>
             </section>
-        </section>
+        </div>
 
-        <!-- Arabic Section -->
-        <section class="arabic-section">
+        <!-- Arabic Content (Hidden by Default) -->
+        <div class="arabic-section">
+            <h2><span class="sparkle">✨</span> النسخة العربية</h2>
+            
             <section class="hero-section">
-                <h2 class="bilingual-header">رحلتنا ورؤيتنا</h2>
+                <h2>رحلتنا ورؤيتنا</h2>
                 <p>اكتشف القلب وراء أبا القاسم—حيث يلتقي الإيمان والخبرة والابتكار لتمكين مستقبلك الرقمي.</p>
                 <a href="#services" class="cta-button">غوص في خدماتنا</a>
             </section>
@@ -75,13 +77,12 @@
                     <li><span class="emoji">🚀</span> دعم التحول الرقمي: مساعدة المنظمات على إطلاق الخدمات الإلكترونية بدقة وتأثير.</li>
                 </ul>
             </div>
-        </section>
+        </div>
     </main>
     <footer>
         <p>&copy; 2025 Aba Alqassim. All rights reserved.</p>
     </footer>
 
-    <!-- Language Toggle JS -->
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         const toggleBtn = document.querySelector('.lang-toggle');
