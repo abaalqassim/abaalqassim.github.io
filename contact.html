@@ -24,8 +24,8 @@
         </nav>
     </header>
     <main>
-        <!-- English Section -->
-        <section class="english-section">
+        <!-- English Content (Visible by Default) -->
+        <div class="english-section">
             <section class="contact-hero">
                 <h2>Get in Touch</h2>
                 <p>Ready to start your digital journey? We'd love to hear from you. Fill out the form below.</p>
@@ -54,17 +54,17 @@
                     <button type="submit" class="cta-button">Send Message</button>
                 </form>
             </section>
-        </section>
+        </div>
 
-        <!-- Arabic Section -->
-        <section class="arabic-section">
+        <!-- Arabic Content (Hidden by Default) -->
+        <div class="arabic-section">
             <section class="contact-hero">
-                <h2 class="bilingual-header">تواصل معنا</h2>
-                <p>هل أنت جاهز لبدء رحلتك الرقمية؟ نحب سماع منك. املأ النموذج أدناه.</p>
+                <h2>تواصل معنا</h2>
+                <p>هل أنت جاهز لبدء رحلتك الرقمية؟ نحب السماع منك. املأ النموذج أدناه.</p>
             </section>
 
             <section class="contact-form-section">
-                <h2 class="bilingual-header">أرسل لنا رسالة</h2>
+                <h2>أرسل لنا رسالة</h2>
                 <form id="contact-form-ar" class="contact-form">
                     <input type="hidden" name="cc" value="s.ahmedjaffer@gmail.com">
                     <div>
@@ -86,41 +86,69 @@
                     <button type="submit" class="cta-button">أرسل الرسالة</button>
                 </form>
             </section>
-        </section>
+        </div>
     </main>
     <footer>
         <p>&copy; 2025 Aba Alqassim. All rights reserved.</p>
     </footer>
 
-    <!-- EmailJS & Toggle JS -->
+    <!-- EmailJS JS -->
     <script type="text/javascript">
-        // EmailJS for English form
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            emailjs.sendForm('YOUR_SERVICE_ID_HERE', 'YOUR_TEMPLATE_ID_HERE', this)
-                .then(() => { alert('Thank you!'); this.reset(); })
-                .catch(() => alert('Failed to send.'));
-        });
+        document.addEventListener('DOMContentLoaded', function() {
+            // English form
+            const englishForm = document.getElementById('contact-form');
+            if (englishForm) {
+                englishForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    emailjs.sendForm('YOUR_SERVICE_ID_HERE', 'YOUR_TEMPLATE_ID_HERE', this)
+                        .then(() => { alert('Thank you!'); this.reset(); })
+                        .catch(() => alert('Failed to send.'));
+                });
+            }
 
-        // EmailJS for Arabic form
-        document.getElementById('contact-form-ar').addEventListener('submit', function(e) {
-            e.preventDefault();
-            emailjs.sendForm('YOUR_SERVICE_ID_HERE', 'YOUR_TEMPLATE_ID_HERE', this)
-                .then(() => { alert('شكراً!'); this.reset(); })
-                .catch(() => alert('فشل في الإرسال.'));
+            // Arabic form
+            const arabicForm = document.getElementById('contact-form-ar');
+            if (arabicForm) {
+                arabicForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    emailjs.sendForm('YOUR_SERVICE_ID_HERE', 'YOUR_TEMPLATE_ID_HERE', this)
+                        .then(() => { alert('شكراً!'); this.reset(); })
+                        .catch(() => alert('فشل في الإرسال.'));
+                });
+            }
         });
     </script>
 
-    <!-- Language Toggle JS -->
+    <!-- Language Toggle JS with Debug -->
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         const toggleBtn = document.querySelector('.lang-toggle');
         const body = document.body;
+        const englishSection = document.querySelector('.english-section');
+        const arabicSection = document.querySelector('.arabic-section');
+        
+        if (!toggleBtn) {
+            console.error('Toggle button not found!');
+            return;
+        }
         
         toggleBtn.addEventListener('click', function() {
+            console.log('Toggle clicked! Current class: ', body.classList); // Debug
             body.classList.toggle('arabic-mode');
-            const lang = body.classList.contains('arabic-mode') ? 'English' : 'عربي';
+            const isArabic = body.classList.contains('arabic-mode');
+            console.log('Mode after toggle: ', isArabic ? 'Arabic' : 'English'); // Debug
+            
+            const lang = isArabic ? 'English' : 'عربي';
             toggleBtn.textContent = `Switch to ${lang}`;
+            
+            // Force display changes for safety
+            if (isArabic) {
+                englishSection.style.display = 'none';
+                arabicSection.style.display = 'block';
+            } else {
+                englishSection.style.display = 'block';
+                arabicSection.style.display = 'none';
+            }
         });
     });
     </script>
