@@ -71,5 +71,17 @@
     <footer>
         <p>&copy; 2025 Aba Alqassim. All rights reserved.</p>
     </footer>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const toggleBtn = document.querySelector('.lang-toggle');
+    const body = document.body;
+    
+    toggleBtn.addEventListener('click', function() {
+        body.classList.toggle('arabic-mode');
+        const lang = body.classList.contains('arabic-mode') ? 'عربي' : 'English';
+        toggleBtn.textContent = `Switch to ${lang}`;
+    });
+});
+</script>
 </body>
 </html>
