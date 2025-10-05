@@ -161,11 +161,9 @@ section {
 }
 .services-list-arabic li {
     display: flex;
-    /* Removed flex-direction: row; as it's default */
     align-items: flex-start;
     direction: rtl;
     text-align: right;
-    /* Removed justify-content: flex-start; as direction:rtl handles alignment */
     margin-bottom: 1rem;
     padding: 1rem;
     background: #E9ECEF;
@@ -177,7 +175,8 @@ section {
 }
 .services-list-arabic .emoji {
     font-size: 1.5rem;
-    margin-inline-end: 0.5rem; /* Space after emoji in RTL */
+    margin-left: 0.5rem; /* Space before emoji in RTL */
+    margin-inline-end: 0; /* Reset margin-inline-end */
     flex-shrink: 0;
 }
 .services-list-arabic .rtl-text {
@@ -301,9 +300,13 @@ footer {
 }
 
 .arabic-mode .hero-section,
-.arabic-mode .overview-section,
-.arabic-mode .services-teaser {
+.arabic-mode .overview-section {
     text-align: right;
+}
+
+.arabic-mode .services-teaser h2,
+.arabic-mode .services-teaser p {
+    text-align: right; /* Ensure text remains right-aligned */
 }
 
 /* Responsive Design */
