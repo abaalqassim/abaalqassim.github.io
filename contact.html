@@ -240,7 +240,143 @@
 <body>
     <header>
         <h1 class="bilingual-header">Contact Aba Alqassim</h1>
-        <nav>
+       <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="lang-toggle">Switch to عربي</button>
+        </nav>
+    </header>
+    <main>
+        <!-- English Content (Visible by Default) -->
+        <div class="english-section">
+            <section class="contact-hero">
+                <h2>Get in Touch</h2>
+                <p>Ready to start your digital journey? We'd love to hear from you. Fill out the form below.</p>
+            </section>
+
+            <section class="contact-form-section">
+                <h2>Send Us a Message</h2>
+                <form id="contact-form" class="contact-form">
+                    <input type="hidden" name="cc" value="s.ahmedjaffer@gmail.com">
+                    <div>
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div>
+                        <label for="subject">Subject:</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div>
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">Send Message</button>
+                </form>
+            </section>
+        </div>
+
+        <!-- Arabic Content (Hidden by Default) -->
+        <div class="arabic-section">
+            <section class="contact-hero">
+                <h2>تواصل معنا</h2>
+                <p>هل أنت جاهز لبدء رحلتك الرقمية؟ نحب السماع منك. املأ النموذج أدناه.</p>
+            </section>
+
+            <section class="contact-form-section">
+                <h2>أرسل لنا رسالة</h2>
+                <form id="contact-form-ar" class="contact-form">
+                    <input type="hidden" name="cc" value="s.ahmedjaffer@gmail.com">
+                    <div>
+                        <label for="name-ar">الاسم:</label>
+                        <input type="text" id="name-ar" name="name" required>
+                    </div>
+                    <div>
+                        <label for="email-ar">البريد الإلكتروني:</label>
+                        <input type="email" id="email-ar" name="email" required>
+                    </div>
+                    <div>
+                        <label for="subject-ar">الموضوع:</label>
+                        <input type="text" id="subject-ar" name="subject" required>
+                    </div>
+                    <div>
+                        <label for="message-ar">الرسالة:</label>
+                        <textarea id="message-ar" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">أرسل الرسالة</button>
+                </form>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 Aba Alqassim. All rights reserved.</p>
+    </footer>
+
+    <!-- EmailJS JS -->
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            // English form
+            const englishForm = document.getElementById('contact-form');
+            if (englishForm) {
+                englishForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    emailjs.sendForm('YOUR_SERVICE_ID_HERE', 'YOUR_TEMPLATE_ID_HERE', this)
+                        .then(() => { alert('Thank you!'); this.reset(); })
+                        .catch(() => alert('Failed to send.'));
+                });
+            }
+
+            // Arabic form
+            const arabicForm = document.getElementById('contact-form-ar');
+            if (arabicForm) {
+                arabicForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    emailjs.sendForm('YOUR_SERVICE_ID_HERE', 'YOUR_TEMPLATE_ID_HERE', this)
+                        .then(() => { alert('شكراً!'); this.reset(); })
+                        .catch(() => alert('فشل في الإرسال.'));
+                });
+            }
+        });
+    </script>
+
+    <!-- Language Toggle JS with Debug -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggleBtn = document.querySelector('.lang-toggle');
+        const body = document.body;
+        const englishSection = document.querySelector('.english-section');
+        const arabicSection = document.querySelector('.arabic-section');
+        
+        if (!toggleBtn) {
+            console.error('Toggle button not found!');
+            return;
+        }
+        
+        toggleBtn.addEventListener('click', function() {
+            console.log('Toggle clicked! Current class: ', body.classList); // Debug
+            body.classList.toggle('arabic-mode');
+            const isArabic = body.classList.contains('arabic-mode');
+            console.log('Mode after toggle: ', isArabic ? 'Arabic' : 'English'); // Debug
+            
+            const lang = isArabic ? 'English' : 'عربي';
+            toggleBtn.textContent = `Switch to ${lang}`;
+            
+            // Force display changes for safety
+            if (isArabic) {
+                englishSection.style.display = 'none';
+                arabicSection.style.display = 'block';
+            } else {
+                englishSection.style.display = 'block';
+                arabicSection.style.display = 'none';
+            }
+        });
+    });
+    </script>
+</body>
+</html>
