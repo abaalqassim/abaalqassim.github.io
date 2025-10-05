@@ -10,10 +10,15 @@
     <header>
         <h1 class="bilingual-header">Welcome to Aba Alqassim</h1>
         <nav>
-            <ul>
+            <ul class="english-nav">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <ul class="arabic-nav">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="about.html">من نحن</a></li>
+                <li><a href="contact.html">اتصل بنا</a></li>
             </ul>
             <button class="lang-toggle">Switch to عربي</button>
         </nav>
@@ -82,6 +87,8 @@
         const body = document.body;
         const englishSection = document.querySelector('.english-section');
         const arabicSection = document.querySelector('.arabic-section');
+        const englishNav = document.querySelector('.english-nav');
+        const arabicNav = document.querySelector('.arabic-nav');
         
         if (!toggleBtn) {
             console.error('Toggle button not found!');
@@ -95,11 +102,15 @@
             toggleBtn.textContent = 'Switch to English';
             englishSection.style.display = 'none';
             arabicSection.style.display = 'block';
+            englishNav.style.display = 'none';
+            arabicNav.style.display = 'flex';
         } else {
             body.classList.remove('arabic-mode');
             toggleBtn.textContent = 'Switch to عربي';
             englishSection.style.display = 'block';
             arabicSection.style.display = 'none';
+            englishNav.style.display = 'flex';
+            arabicNav.style.display = 'none';
         }
         
         toggleBtn.addEventListener('click', function() {
@@ -116,9 +127,13 @@
             if (isArabic) {
                 englishSection.style.display = 'none';
                 arabicSection.style.display = 'block';
+                englishNav.style.display = 'none';
+                arabicNav.style.display = 'flex';
             } else {
                 englishSection.style.display = 'block';
                 arabicSection.style.display = 'none';
+                englishNav.style.display = 'flex';
+                arabicNav.style.display = 'none';
             }
         });
     });

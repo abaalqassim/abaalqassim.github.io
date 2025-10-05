@@ -72,9 +72,6 @@ section {
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
-.arabic-subsection {
-    margin-bottom: 2rem;
-}
 
 /* Hero Section */
 .hero-section {
@@ -272,10 +269,23 @@ footer {
     text-align: right;
 }
 .arabic-mode nav ul {
-    justify-content: flex-end; /* Right-align nav in RTL */
+    justify-content: center; /* Center nav in RTL as well */
 }
 .arabic-mode .cta-button {
     margin-right: auto; /* Buttons right-aligned */
+}
+
+/* Hide/Show navigation links based on language mode */
+.arabic-nav {
+    display: none;
+}
+
+.arabic-mode .english-nav {
+    display: none;
+}
+
+.arabic-mode .arabic-nav {
+    display: flex; /* Show Arabic nav in Arabic mode */
 }
 
 /* Bilingual Headers */
@@ -284,6 +294,9 @@ footer {
 }
 .arabic-mode .bilingual-header {
     font-family: 'Tajawal', sans-serif;
+}
+.arabic-mode .arabic-section h3 {
+    text-align: right;
 }
 
 /* Responsive Design */
