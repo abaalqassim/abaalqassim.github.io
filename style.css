@@ -163,7 +163,8 @@ section {
     display: flex;
     align-items: flex-start;
     direction: rtl;
-    text-align: right;
+    text-align: center; /* Center content within list item */
+    /* Removed justify-content: center; as it conflicts with direction:rtl for block centering */
     margin-bottom: 1rem;
     padding: 1rem;
     background: #E9ECEF;
@@ -181,7 +182,7 @@ section {
 }
 .services-list-arabic .rtl-text {
     direction: rtl;
-    text-align: right;
+    text-align: center; /* Center the text within the span */
     flex: 1;
 }
 
