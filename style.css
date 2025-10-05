@@ -132,6 +132,7 @@ section {
     list-style: none;
     padding-left: 0;
     margin: 0 auto; /* Center the list */
+    max-width: 600px; /* Ensure consistent width */
 }
 .services-list li {
     display: flex;
@@ -156,6 +157,7 @@ section {
     padding-right: 0; /* RTL padding */
     direction: rtl;
     margin: 0 auto; /* Center the list */
+    max-width: 600px; /* Ensure consistent width */
 }
 .services-list-arabic li {
     display: flex;
