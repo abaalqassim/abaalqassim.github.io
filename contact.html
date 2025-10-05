@@ -4,238 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - Aba Alqassim</title>
-    <style>
-        /* Import Google Fonts */
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Tajawal:wght@400;700&display=swap');
-        
-        /* Reset and Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #F8F9FA;
-        }
-        h1, h2, h3 {
-            color: #007BFF;
-            margin-bottom: 1rem;
-        }
-        p {
-            margin-bottom: 1rem;
-        }
-        /* Header and Navigation */
-        header {
-            background-color: #007BFF;
-            color: white;
-            padding: 1rem 0;
-            text-align: center;
-        }
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 0.5rem;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-        nav a:hover {
-            color: #FFD700;
-        }
-        /* Language Toggle Button */
-        .lang-toggle {
-            background: none;
-            border: none;
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-            margin-left: 1rem;
-            transition: color 0.3s ease;
-        }
-        .lang-toggle:hover {
-            color: #FFD700;
-        }
-        /* Main Content */
-        main {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-        section {
-            margin-bottom: 3rem;
-            padding: 2rem;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        /* Contact Hero */
-        .contact-hero {
-            text-align: center;
-            padding: 3rem 2rem;
-            background: linear-gradient(135deg, #28A745, #1E7E34);
-            color: white;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-        }
-        .contact-hero h2 {
-            color: white;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        .contact-hero p {
-            font-size: 1.2rem;
-            color: #E9ECEF;
-        }
-        /* Contact Form */
-        .contact-form-section {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-        .contact-form label {
-            font-weight: 600;
-            color: #007BFF;
-            margin-bottom: 0.25rem;
-            display: block; /* Full-width on mobile */
-        }
-        .contact-form input,
-        .contact-form textarea {
-            padding: 0.75rem;
-            border: 1px solid #CED4DA;
-            border-radius: 5px;
-            font-family: inherit;
-            font-size: 1rem;
-            width: 100%; /* Full-width for responsiveness */
-        }
-        .contact-form input:focus,
-        .contact-form textarea:focus {
-            outline: none;
-            border-color: #007BFF;
-            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-        }
-        .contact-form > div {
-            display: flex;
-            flex-direction: column; /* Stack label/input vertically */
-        }
-        .contact-form button {
-            align-self: flex-start;
-            margin-top: 1rem;
-            padding: 0.75rem 1.5rem;
-        }
-        /* Call-to-Action Button */
-        .cta-button {
-            display: inline-block;
-            background-color: #FFD700;
-            color: #007BFF;
-            padding: 0.75rem 1.5rem;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: background-color 0.3s ease;
-        }
-        .cta-button:hover {
-            background-color: #E6C200;
-        }
-        /* Footer */
-        footer {
-            background-color: #343A40;
-            color: white;
-            text-align: center;
-            padding: 1rem 0;
-            margin-top: 2rem;
-        }
-        /* Language Sections - Toggle Logic */
-        .english-section {
-            display: block !important; /* Visible by default */
-        }
-        .arabic-section {
-            display: none !important; /* Hidden by default */
-        }
-        .arabic-mode .english-section {
-            display: none !important; /* Hide English on toggle */
-        }
-        .arabic-mode .arabic-section {
-            display: block !important; /* Show Arabic on toggle */
-        }
-        .arabic-mode {
-            direction: rtl; /* RTL for Arabic */
-            text-align: right;
-        }
-        .arabic-mode nav ul {
-            justify-content: flex-end; /* Right-align nav in RTL */
-        }
-        .arabic-mode .contact-form label {
-            text-align: right; /* RTL labels */
-        }
-        /* Bilingual Headers */
-        .bilingual-header {
-            text-align: center;
-        }
-        .arabic-mode .bilingual-header {
-            font-family: 'Tajawal', sans-serif;
-        }
-        /* Responsive Design - Enhanced for Forms */
-        @media (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            .lang-toggle {
-                margin-left: 0;
-                margin-top: 0.5rem;
-            }
-            section {
-                padding: 1rem;
-                margin-bottom: 2rem;
-            }
-            .contact-form {
-                gap: 0.75rem;
-            }
-            .contact-hero {
-                padding: 2rem 1rem;
-            }
-            .contact-hero h2 {
-                font-size: 2rem;
-            }
-            .contact-form input,
-            .contact-form textarea {
-                padding: 1rem; /* Larger touch targets */
-            }
-            .contact-form button {
-                width: 100%; /* Full-width button on mobile */
-                padding: 1rem;
-            }
-        }
-        /* Animation for Toggle */
-        .english-section, .arabic-section {
-            transition: opacity 0.5s ease, transform 0.3s ease;
-        }
-        .arabic-mode .english-section {
-            opacity: 0;
-            transform: translateX(20px);
-        }
-        .english-mode .arabic-section {
-            opacity: 0;
-            transform: translateX(-20px);
-        }
-        .arabic-mode .arabic-section,
-        .english-mode .english-section {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
@@ -345,7 +114,7 @@
         });
     </script>
 
-    <!-- Language Toggle JS with Debug -->
+    <!-- Language Toggle JS -->
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         const toggleBtn = document.querySelector('.lang-toggle');
@@ -357,16 +126,31 @@
             console.error('Toggle button not found!');
             return;
         }
+
+        // Check for saved language preference on page load
+        const savedLang = localStorage.getItem('lang');
+        if (savedLang === 'arabic') {
+            body.classList.add('arabic-mode');
+            toggleBtn.textContent = 'Switch to English';
+            englishSection.style.display = 'none';
+            arabicSection.style.display = 'block';
+        } else {
+            body.classList.remove('arabic-mode');
+            toggleBtn.textContent = 'Switch to عربي';
+            englishSection.style.display = 'block';
+            arabicSection.style.display = 'none';
+        }
         
         toggleBtn.addEventListener('click', function() {
-            console.log('Toggle clicked! Current class: ', body.classList); // Debug
             body.classList.toggle('arabic-mode');
             const isArabic = body.classList.contains('arabic-mode');
-            console.log('Mode after toggle: ', isArabic ? 'Arabic' : 'English'); // Debug
             
             const lang = isArabic ? 'English' : 'عربي';
             toggleBtn.textContent = `Switch to ${lang}`;
             
+            // Save language preference
+            localStorage.setItem('lang', isArabic ? 'arabic' : 'english');
+
             // Force display changes for safety
             if (isArabic) {
                 englishSection.style.display = 'none';

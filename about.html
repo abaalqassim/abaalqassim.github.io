@@ -4,180 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Aba Alqassim</title>
-    <style>
-        /* Import Google Fonts */
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Tajawal:wght@400;700&display=swap');
-        
-        /* Reset and Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #F8F9FA;
-        }
-        h1, h2, h3 {
-            color: #007BFF;
-            margin-bottom: 1rem;
-        }
-        p {
-            margin-bottom: 1rem;
-        }
-        
-        /* Header and Navigation */
-        header {
-            background-color: #007BFF;
-            color: white;
-            padding: 1rem 0;
-            text-align: center;
-        }
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 0.5rem;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-        nav a:hover {
-            color: #FFD700; /* Gold hover for warmth */
-        }
-        
-        /* Language Toggle Button */
-        .lang-toggle {
-            background: none;
-            border: none;
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-            margin-left: 1rem;
-            transition: color 0.3s ease;
-        }
-        .lang-toggle:hover {
-            color: #FFD700;
-        }
-        
-        /* Main Content */
-        main {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-        section {
-            margin-bottom: 3rem;
-            padding: 2rem;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        .arabic-subsection {
-            margin-bottom: 2rem;
-        }
-        
-        /* Hero Section */
-        .hero-section {
-            text-align: center;
-            padding: 3rem 2rem;
-            background: linear-gradient(135deg, #007BFF, #0056b3);
-            color: white;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-        }
-        .hero-section h2 {
-            color: white;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        .hero-section p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            color: #E9ECEF;
-        }
-        
-        /* Call-to-Action Button */
-        .cta-button {
-            display: inline-block;
-            background-color: #FFD700;
-            color: #007BFF;
-            padding: 0.75rem 1.5rem;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: background-color 0.3s ease;
-        }
-        .cta-button:hover {
-            background-color: #E6C200;
-        }
-        
-        /* Overview Section */
-        .overview-section {
-            text-align: center;
-        }
-        
-        /* Services Teaser */
-        .services-teaser {
-            text-align: center;
-        }
-        .services-teaser .services-list li {
-            justify-content: center;
-            background: transparent;
-            padding: 0.5rem;
-            font-weight: 600;
-        }
-        .services-teaser .services-list li:hover {
-            background: #E9ECEF;
-        }
-        
-        /* Services List - English LTR */
-        .services-list {
-            list-style: none;
-            padding-left: 0;
-        }
-        .services-list li {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-            padding: 1rem;
-            background: #E9ECEF;
-            border-radius: 5px;
-            transition: background 0.3s ease;
-        }
-        .services-list li:hover {
-            background: #DDE5F0;
-        }
-        .services-list .emoji {
-            font-size: 1.5rem;
-            margin-right: 0.5rem; /* LTR: emoji left */
-        }
-        
-        /* Services List - Arabic RTL */
-        .services-list-arabic {
-            list-style: none;
-            padding-right: 0; /* RTL padding */
-            direction: rtl;
-        }
-        .services-list-arabic li {
-            display: flex;
-            flex-direction: row;
-            align-items: flex-start;
-            direction: rtl;
-            text-align: right;
-            justify-content: flex-start;
-            margin-bottom: 1rem;
-            padding: 1rem;
-            background: #E9ECEF;
-            border-radius: 5px;
-            transition: background 0.
-</style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
@@ -267,16 +94,31 @@
             console.error('Toggle button not found!');
             return;
         }
+
+        // Check for saved language preference on page load
+        const savedLang = localStorage.getItem('lang');
+        if (savedLang === 'arabic') {
+            body.classList.add('arabic-mode');
+            toggleBtn.textContent = 'Switch to English';
+            englishSection.style.display = 'none';
+            arabicSection.style.display = 'block';
+        } else {
+            body.classList.remove('arabic-mode');
+            toggleBtn.textContent = 'Switch to عربي';
+            englishSection.style.display = 'block';
+            arabicSection.style.display = 'none';
+        }
         
         toggleBtn.addEventListener('click', function() {
-            console.log('Toggle clicked! Current class: ', body.classList); // Debug
             body.classList.toggle('arabic-mode');
             const isArabic = body.classList.contains('arabic-mode');
-            console.log('Mode after toggle: ', isArabic ? 'Arabic' : 'English'); // Debug
             
             const lang = isArabic ? 'English' : 'عربي';
             toggleBtn.textContent = `Switch to ${lang}`;
             
+            // Save language preference
+            localStorage.setItem('lang', isArabic ? 'arabic' : 'english');
+
             // Force display changes for safety
             if (isArabic) {
                 englishSection.style.display = 'none';
