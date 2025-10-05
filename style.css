@@ -296,6 +296,12 @@ footer {
     text-align: right;
 }
 
+.arabic-mode .hero-section,
+.arabic-mode .overview-section,
+.arabic-mode .services-teaser {
+    text-align: right;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     nav ul {
