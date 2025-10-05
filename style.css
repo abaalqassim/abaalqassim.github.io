@@ -131,6 +131,7 @@ section {
 .services-list {
     list-style: none;
     padding-left: 0;
+    margin: 0 auto; /* Center the list */
 }
 .services-list li {
     display: flex;
@@ -154,14 +155,15 @@ section {
     list-style: none;
     padding-right: 0; /* RTL padding */
     direction: rtl;
+    margin: 0 auto; /* Center the list */
 }
 .services-list-arabic li {
     display: flex;
-    flex-direction: row;
+    /* Removed flex-direction: row; as it's default */
     align-items: flex-start;
     direction: rtl;
     text-align: right;
-    justify-content: flex-start;
+    /* Removed justify-content: flex-start; as direction:rtl handles alignment */
     margin-bottom: 1rem;
     padding: 1rem;
     background: #E9ECEF;
