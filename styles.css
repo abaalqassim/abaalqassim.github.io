@@ -81,6 +81,10 @@ section {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+.arabic-subsection {
+    margin-bottom: 2rem;
+}
+
 /* Services List - English LTR */
 .services-list {
     list-style: none;
@@ -106,20 +110,20 @@ section {
     margin-right: 0.5rem; /* LTR: emoji left */
 }
 
-/* Services List - Arabic RTL */
+/* Services List - Arabic RTL (Forced RTL Flow) */
 .services-list-arabic {
     list-style: none;
     padding-right: 0; /* RTL padding */
-    direction: rtl;
+    direction: rtl; /* Force RTL on list */
 }
 
 .services-list-arabic li {
     display: flex;
-    flex-direction: row;
+    flex-direction: row; /* Natural RTL flow: starts from right */
     align-items: flex-start;
-    direction: rtl;
-    text-align: right;
-    justify-content: flex-start;
+    direction: rtl; /* Force RTL on each item */
+    text-align: right; /* Arabic text right-aligned */
+    justify-content: flex-start; /* Start from right in RTL */
     margin-bottom: 1rem;
     padding: 1rem;
     background: #E9ECEF;
@@ -133,14 +137,14 @@ section {
 
 .services-list-arabic .emoji {
     font-size: 1.5rem;
-    margin-inline-end: 0.5rem; /* Space after emoji in RTL */
-    flex-shrink: 0;
+    margin-inline-end: 0.5rem; /* Logical: space "after" emoji (left side in RTL, so emoji stays on right) */
+    flex-shrink: 0; /* Prevent emoji from shrinking */
 }
 
 .services-list-arabic .rtl-text {
     direction: rtl;
     text-align: right;
-    flex: 1;
+    flex: 1; /* Take remaining space */
 }
 
 /* Sparkle Icon */
@@ -157,179 +161,49 @@ footer {
     margin-top: 2rem;
 }
 
-/* Hero Section */
-.hero-section {
-    text-align: center;
-    padding: 3rem 2rem;
-    background: linear-gradient(135deg, #007B
-
-
-/* Contact Hero */
-.contact-hero {
-    text-align: center;
-    padding: 3rem 2rem;
-    background: linear-gradient(135deg, #28A745, #1E7E34);
-    color: white;
-    border-radius: 8px;
-    margin-bottom: 2rem;
-}
-
-.contact-hero h2 {
-    color: white;
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-}
-
-.contact-hero p {
-    font-size: 1.2rem;
-    color: #E9ECEF;
-}
-
-/* Contact Form */
-.contact-form-section {
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.contact-form label {
-    font-weight: 600;
-    color: #007BFF;
-}
-
-.contact-form input,
-.contact-form textarea {
-    padding: 0.75rem;
-    border: 1px solid #CED4DA;
-    border-radius: 5px;
-    font-family: inherit;
-    font-size: 1rem;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-    outline: none;
-    border-color: #007BFF;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-}
-
-.contact-form button {
-    align-self: flex-start;
-    margin-top: 1rem;
-}
-
-/* Call-to-Action Button */
-.cta-button {
-    display: inline-block;
-    background-color: #FFD700;
-    color: #007BFF;
-    padding: 0.75rem 1.5rem;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: 600;
-    transition: background-color 0.3s ease;
-}
-
-.cta-button:hover {
-    background-color: #E6C200;
-}
-
-/* Footer */
-footer {
-    background-color: #343A40;
-    color: white;
-    text-align: center;
-    padding: 1rem 0;
-    margin-top: 2rem;
-}
-
-/* Language Sections - Toggle Logic */
-.english-section {
-    display: block !important; /* Visible by default */
-}
-
-.arabic-section {
-    display: none !important; /* Hidden by default */
-}
-
-.arabic-mode .english-section {
-    display: none !important; /* Hide English on toggle */
-}
-
-.arabic-mode .arabic-section {
-    display: block !important; /* Show Arabic on toggle */
-}
-
-.arabic-mode {
-    direction: rtl; /* RTL for Arabic */
-    text-align: right;
-}
-
-.arabic-mode nav ul {
-    justify-content: flex-end; /* Right-align nav in RTL */
-}
-
-.arabic-mode .contact-form label {
-    text-align: right; /* RTL labels */
-}
-
-/* Bilingual Headers */
-.bilingual-header {
-    text-align: center;
-}
-
-.arabic-mode .bilingual-header {
-    font-family: 'Tajawal', sans-serif;
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
     nav ul {
         flex-direction: column;
         gap: 1rem;
     }
-    .lang-toggle {
-        margin-left: 0;
-        margin-top: 0.5rem;
-    }
+
     section {
         padding: 1rem;
         margin-bottom: 2rem;
     }
-    .contact-form {
-        gap: 0.75rem;
-    }
-    .hero-section {
-        padding: 2rem 1rem;
-    }
-    .hero-section h2 {
-        font-size: 2rem;
+
+    .services-list li,
+    .services-list-arabic li {
+        flex-direction: column;
+        text-align: center;
     }
 }
 
-/* Animation for Toggle */
-.english-section, .arabic-section {
-    transition: opacity 0.5s ease, transform 0.3s ease;
+/* Hero Section */
+.hero-section {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, #007BFF, #0056b3);
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 2rem;
 }
 
-.arabic-mode .english-section {
-    opacity: 0;
-    transform: translateX(20px);
+.hero-section h2 {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
 }
 
-.english-mode .arabic-section {
-    opacity: 0;
-    transform: translateX(-20px);
+.hero-section p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #E9ECEF;
 }
 
-.arabic-mode .arabic-section,
-.english-mode .english-section {
-    opacity: 1;
-    transform: translateX(0);
-}
-
+/* Call-to-Action Button */
+.cta-button {
+    display: inline-block;
+    background-color: #FFD700;
+    color: #007B
